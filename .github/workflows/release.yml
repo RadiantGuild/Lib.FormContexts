@@ -19,6 +19,8 @@ jobs:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
           cache: pnpm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
       - run: pnpm install
       - uses: changesets/action@v1
         with:
