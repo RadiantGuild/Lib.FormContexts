@@ -24,6 +24,8 @@ Allows a label to access the validation state of its input.
 
 - `useValidation`: Returns the validation result of the input that is also under the provider
 
+- `useValidationSuspense`: Same as the above hook, except it suspends if the validation is in the loading state so that you always get a complete validation returned
+
 - `useValidationUpdate`: Updates the validation result that `useValdiation` returns. If you are using `useInputState`, it handles this for you.
 
 ## Shared IDs
@@ -43,5 +45,3 @@ Allows inline items for an input to be specified as siblings to the input compon
 - `useInlineItems`: Returns the left and right inline items if they are set
 
 - `useInlineItem`: Sets the inline item component for one of the sides
-
-

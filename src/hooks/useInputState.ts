@@ -17,9 +17,7 @@ export interface UseInputStateProps {
     value: string;
 
     /**
-     * Yoogi validators, which are used to control the form's validation state.
-     *
-     * Note that if a validator is async, you need to wrap your component in `Suspense`
+     * Yoogi validators, which are used to control the form's validation state
      */
     validators?: readonly Validator[];
 
