@@ -76,14 +76,14 @@ export function useInputState({
         deferredValue,
         validators ?? emptyValidatorArray,
         validationOptions
-    ).read();
+    );
 
     useEffect(() => {
         if (value) setEdited(true);
     }, [value]);
 
     useValidationUpdate(edited ? validateResult : null);
-    useInputValidity(validateResult.isValid);
+    useInputValidity(!!validateResult.isValid);
 
     return {
         id,
