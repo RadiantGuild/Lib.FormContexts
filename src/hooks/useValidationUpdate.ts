@@ -1,6 +1,6 @@
 import {ValidateResult} from "@radiantguild/yoogi";
 import {useContext, useEffect} from "react";
-import {ValidationContext} from "~/contexts/ValidationContext";
+import {ValidationSetterContext} from "~/contexts/ValidationSetterContext";
 
 /**
  * Sets the validation result of this input so that `useValidation` can read it
@@ -9,8 +9,7 @@ import {ValidationContext} from "~/contexts/ValidationContext";
  * @see useValidation
  */
 export default function useValidationUpdate(result: ValidateResult | null): void {
-    const ctx = useContext(ValidationContext);
-    const setValidateResult = ctx?.setValidateResult;
+    const setValidateResult = useContext(ValidationSetterContext);
 
     useEffect(() => {
         setValidateResult?.(result);

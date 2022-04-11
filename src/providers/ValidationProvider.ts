@@ -1,6 +1,7 @@
 import {ValidateResult} from "@radiantguild/yoogi";
-import {createElement, ReactNode, useMemo, useState} from "react";
-import {ValidationContext} from "~/contexts/ValidationContext";
+import {createElement, ReactNode, useState} from "react";
+import {ValidationGetterContext} from "~/contexts/ValidationGetterContext";
+import {ValidationSetterContext} from "~/contexts/ValidationSetterContext";
 
 export interface ValidationProviderProps {
     children: ReactNode;
@@ -17,19 +18,13 @@ export function ValidationProvider({children}: ValidationProviderProps) {
         null
     );
 
-    const contextValue = useMemo<ValidationContext>(
-        () => ({
-            validateResult,
-            setValidateResult
-        }),
-        [validateResult, setValidateResult]
-    );
-
     return createElement(
-        ValidationContext.Provider,
-        {
-            value: contextValue
-        },
-        children
+        ValidationSetterContext.Provider,
+        {value: setValidateResult},
+        createElement(
+            ValidationGetterContext.Provider,
+            {value: validateResult},
+            children
+        )
     );
 }

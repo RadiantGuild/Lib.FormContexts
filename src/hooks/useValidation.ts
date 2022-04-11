@@ -1,6 +1,6 @@
 import {ValidateResult} from "@radiantguild/yoogi";
 import {useContext} from "react";
-import {ValidationContext} from "~/contexts/ValidationContext";
+import {ValidationGetterContext} from "~/contexts/ValidationGetterContext";
 
 /**
  * Returns the validation result of the sibling input
@@ -9,5 +9,5 @@ import {ValidationContext} from "~/contexts/ValidationContext";
  * @see useValidationUpdate
  */
 export default function useValidation(): ValidateResult | null {
-    return useContext(ValidationContext)?.validateResult ?? null;
+    return useContext(ValidationGetterContext);
 }
