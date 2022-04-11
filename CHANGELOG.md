@@ -1,5 +1,11 @@
 # @radiantguild/form-contexts
 
+## 0.1.3
+
+### Patch Changes
+
+-   [`aa4b304`](https://github.com/RadiantGuild/Lib.FormContexts/commit/aa4b304e43225057a7722d354adae1d0405427d9) Thanks [@Alduino](https://github.com/Alduino)! - Split up the validation context to prevent infinite render loops
+
 ## 0.1.2
 
 ### Patch Changes
