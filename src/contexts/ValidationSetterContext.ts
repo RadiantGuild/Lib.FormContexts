@@ -1,8 +1,9 @@
-import {ValidateResult} from "@radiantguild/yoogi";
+import {CompleteValidateResult, ValidateResult} from "@radiantguild/yoogi";
 import {createContext} from "react";
 
 export interface ValidationSetterContext {
-    (result: ValidateResult | null): void;
+    update(result: ValidateResult | null): void;
+    updateInitial(result: CompleteValidateResult | null): void;
 }
 
 export const ValidationSetterContext = createContext<ValidationSetterContext | null>(null);
