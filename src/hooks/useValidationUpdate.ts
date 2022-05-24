@@ -12,7 +12,7 @@ export default function useValidationUpdate(result: ValidateResult | null): void
     const setValidateResult = useContext(ValidationSetterContext);
 
     useEffect(() => {
-        setValidateResult?.(result);
+        setValidateResult?.update(result);
     }, [setValidateResult, result]);
 }
 

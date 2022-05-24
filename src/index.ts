@@ -11,6 +11,7 @@ export {default as useInputValidity} from "~/hooks/useInputValidity";
 export {default as useLocalId} from "~/hooks/useLocalId";
 export {default as useValidation} from "~/hooks/useValidation";
 export {default as useValidationSuspense} from "~/hooks/useValidationSuspense";
+export {default as useInitialValidationUpdate} from "~/hooks/useInitialValidationUpdate";
 export {default as useValidationUpdate} from "~/hooks/useValidationUpdate";
 export {FormProvider} from "~/providers/FormProvider";
 export type {FormContextProviderProps} from "~/providers/FormProvider";
