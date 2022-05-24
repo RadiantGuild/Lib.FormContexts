@@ -14,63 +14,45 @@ export interface ValidationProviderProps {
     children: ReactNode;
 }
 
-const enum BaseValidatorState {
-    alreadyComplete,
-    firstLoad,
-    secondLoad
-}
-
-function getInitialBaseValidatorState(
-    base: ValidateResult | null
+function getInitialState(
+    base: ValidateResult | null,
+    initial: CompleteValidateResult | null
 ) {
-    if (base?.isLoading) return BaseValidatorState.firstLoad;
-    return BaseValidatorState.firstLoad;
+    return !!(initial && base?.isLoading);
 }
 
 function useCombinedValidateResult(
     base: ValidateResult | null,
     initial: CompleteValidateResult | null
 ) {
-    const state = useRef(getInitialBaseValidatorState(base));
-    const [combined, setCombined] = useState(() => initial ?? base);
+    const wasLoadingWhenInitialUpdated = useRef(getInitialState(base, initial));
+    const baseRef = useRef(base);
 
-    const initialRef = useRef(initial);
-
-    useEffect(() => {
-        const oldInitial = initialRef.current;
-        initialRef.current = initial;
-
-        setCombined(combined => {
-            if (combined === oldInitial) return initial;
-            return oldInitial;
-        });
-    }, [initial]);
+    const [combined, setCombined] = useState(base);
 
     useEffect(() => {
-        if (state.current === BaseValidatorState.alreadyComplete) {
-            if (base?.isLoading) {
-                state.current = BaseValidatorState.firstLoad;
-            } else {
-                setCombined(base);
-            }
-        } else if (state.current === BaseValidatorState.firstLoad) {
-            if (base?.isLoading && initialRef.current) {
-                state.current = BaseValidatorState.secondLoad;
-            }
+        baseRef.current = base;
 
-            if (!base?.isLoading && !initialRef.current) {
-                state.current = BaseValidatorState.alreadyComplete;
-            }
-        } else if (state.current === BaseValidatorState.secondLoad) {
-            setCombined(initialRef.current);
-
-            if (!base?.isLoading) {
-                state.current = BaseValidatorState.alreadyComplete;
-            }
+        if (!wasLoadingWhenInitialUpdated.current && !base?.isLoading) {
+            setCombined(base);
         }
-    }, [base, setCombined]);
 
-    return combined ?? initial;
+        if (wasLoadingWhenInitialUpdated.current && base?.isLoading) {
+            wasLoadingWhenInitialUpdated.current = false;
+        }
+    }, [baseRef, base, setCombined, wasLoadingWhenInitialUpdated]);
+
+    useEffect(() => {
+        if (!initial) return;
+
+        setCombined(initial);
+
+        if (baseRef.current?.isLoading) {
+            wasLoadingWhenInitialUpdated.current = true;
+        }
+    }, [initial, setCombined, baseRef, wasLoadingWhenInitialUpdated]);
+
+    return combined ?? base;
 }
 
 /**

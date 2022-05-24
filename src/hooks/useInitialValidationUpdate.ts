@@ -4,10 +4,10 @@ import {ValidationSetterContext} from "~/contexts/ValidationSetterContext";
 
 /**
  * - If the current validation result is a complete result,
- * this hook replaces its value with the passed result, until `useValidationUpdate` changes it again.
+ *   this hook replaces its value with the passed result, until `useValidationUpdate` changes it again.
  *
  * - If the current validation result is a loading result,
- * this hook replaces its value until the second time `useValidationUpdate`.
+ *   this hook replaces its value until the second time `useValidationUpdate`.
  *
  * - When the base validation result is null, its value always falls back to this one.
  *
