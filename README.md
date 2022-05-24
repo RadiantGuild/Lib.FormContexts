@@ -26,7 +26,9 @@ Allows a label to access the validation state of its input.
 
 - `useValidationSuspense`: Same as the above hook, except it suspends if the validation is in the loading state so that you always get a complete validation returned
 
-- `useValidationUpdate`: Updates the validation result that `useValdiation` returns. If you are using `useInputState`, it handles this for you.
+- `useValidationUpdate`: Updates the validation result that `useValidation` returns. If you are using `useInputState`, it handles this for you.
+
+- `useInitialValidationUpdate`: Updates the validation result until the next time `useValidationUpdate` stops loading.
 
 ## Shared IDs
 
