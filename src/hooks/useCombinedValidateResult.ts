@@ -74,5 +74,5 @@ export function useCombinedValidateResult(
         setHadJustChanged(false);
     }, [hadJustChanged, setHadJustChanged]);
 
-    return combined ?? base;
+    return combined ?? initial;
 }
