@@ -1,5 +1,11 @@
 # @radiantguild/form-contexts
 
+## 0.2.0-beta.1
+
+### Patch Changes
+
+-   [`9f5be6a`](https://github.com/RadiantGuild/Lib.FormContexts/commit/9f5be6a8bdc226da80cf56b9a43cb1940264f773) Thanks [@Alduino](https://github.com/Alduino)! - `useValidationUpdate` is now ignored if `useInitialValidationUpdate` was just called, so that order doesn't matter.
+
 ## 0.2.0-beta.0
 
 ### Minor Changes
