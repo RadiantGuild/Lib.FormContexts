@@ -1,5 +1,6 @@
 import {useContext, useEffect} from "react";
 import {FormContext} from "~/contexts/FormContext";
+import {NoValidationUpdateContext} from "~/contexts/NoValidationUpdateContext";
 
 /**
  * Notifies the wrapping form about the validity of this input
@@ -9,11 +10,12 @@ import {FormContext} from "~/contexts/FormContext";
  */
 export default function useInputValidity(isValid: boolean) {
     const context = useContext(FormContext);
+    const disabled = useContext(NoValidationUpdateContext);
 
     useEffect(() => {
-        if (!context || isValid) return;
+        if (!context || isValid || disabled) return;
 
         context.addInvalid();
         return () => context.removeInvalid();
-    }, [context, isValid]);
+    }, [context, disabled, isValid]);
 }
