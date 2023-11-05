@@ -1,5 +1,11 @@
 # @radiantguild/form-contexts
 
+## 0.3.0
+
+### Minor Changes
+
+-   [#9](https://github.com/RadiantGuild/Lib.FormContexts/pull/9) [`406614f`](https://github.com/RadiantGuild/Lib.FormContexts/commit/406614fe1da90a4d7bebe94a8cf55c924319aadd) Thanks [@Alduino](https://github.com/Alduino)! - Added a `<NoValidationUpdates>` component that disables any validation update calls in its children. See `useValidationUpdate`’s docs for more info.
+
 ## 0.2.0
 
 ### Minor Changes
